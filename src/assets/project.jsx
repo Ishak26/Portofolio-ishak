@@ -25,7 +25,7 @@ function Card({projectName,projectImg}){
             <h2 className="mb-4 font-sans text-lg font-medium text-black px-4 bg-bluelight py-3 rounded-b-lg m-auto text-center leading-5 border-2 border-black  shadow-[1px_8px_0_rgba(24,24,24)] ">{projectName}</h2>
             <div className="px-5">
               <div className="grid grid-cols-[60px_auto]">
-                <p className=" font-bold mt-[-5px] ">stack : </p>
+                <p className=" font-bold mt-[-5px] ">Tech stack : </p>
                 <div className="flex gap-3 text-xl items-center ">
                   <FontAwesomeIcon className="text-indigo-400 transform transition-transform duration-300 hover:scale-125" icon={faPhp}/>
                   <FontAwesomeIcon className="text-red-700 transform transition-transform duration-300 hover:scale-125" icon={faLaravel}/>
@@ -40,7 +40,7 @@ function Card({projectName,projectImg}){
 }
 export default function Project(){
   return <>
-      <section className="mt-11 max-w-screen-md m-auto min-h-screen ">
+      <section id="experience" className="max-w-screen-md m-auto min-h-screen ">
           <h1 className="text-5xl mb-11 text-neonpink font-extrabold">Experience</h1>
           <div className="flex gap-2 justify-center">
           <Card projectName="Sistem Informasi Desa Buntu Barana" projectImg={["project sistem informasi desa.png","berita.png","galeri.png","ke.png","layanan.png","profil desa.png"]}/>
