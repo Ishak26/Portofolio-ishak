@@ -4,7 +4,7 @@ import { faCode, faHouse, faScrewdriverWrench, faX } from '@fortawesome/free-sol
 import * as  motion from 'motion/react-client'
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons'
 import { useEffect,useState } from 'react'
-
+import { AnimatePresence } from 'motion/react'
 
 function Navbar(){
   const [constraints, setConstraints] = useState({
@@ -13,6 +13,11 @@ function Navbar(){
     right: 0,
     bottom: 0,
   });
+
+  const [navBaricon,setNavbaricon]= useState(false);
+  const updateNavbaricon = () =>{
+    setNavbaricon(!navBaricon)
+ }
 
   useEffect(() => {
     const updateConstraints = () => {
@@ -24,6 +29,12 @@ function Navbar(){
         bottom: innerHeight - 100, 
       });
     };
+    
+    const closeNavicon = ()=>{
+      setNavbaricon(false)
+    }
+
+    window.addEventListener("scroll",closeNavicon);
 
     updateConstraints();
     window.addEventListener("resize", updateConstraints);
@@ -47,14 +58,34 @@ function Navbar(){
           </ul>
       </div>
       <motion.div 
-      drag
-      dragConstraints={constraints} 
-      className="fixed md:hidden flex justify-center items-center w-8 h-8 bg-neonpink rounded-xl ms-8 mt-8 z-50  " >
-        <button className='absolute top-[-1rem] left-[-1rem] text-sm'><FontAwesomeIcon icon={faHouse} /></button>
-        <button className='absolute top-[-1rem] right-[-1rem] text-sm'><FontAwesomeIcon icon={faAddressCard} /></button>
-        <button className='text-bluelight'><FontAwesomeIcon icon={faX}/> </button>
-        <button className='absolute bottom-[-1rem] left-[-1rem] text-sm'><FontAwesomeIcon icon={faCode} /></button>
-        <button className='absolute bottom-[-1rem] right-[-1rem] text-sm'><FontAwesomeIcon icon={faScrewdriverWrench} /></button>      
+        drag
+        dragConstraints={constraints}
+        onClick={()=>{
+          updateNavbaricon()
+        }}
+        className="fixed md:hidden flex justify-center items-center w-8 h-8 bg-neonpink rounded-xl ms-8 mt-8 z-50 bg-opacity-25" >
+        <AnimatePresence>
+          {
+          navBaricon &&  (
+            <>
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1, rotate:360 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{
+                  duration:1,
+                  ease:'easeInOut'
+                }}>
+                <button className='absolute top-[-1.5rem] left-[-1.5rem] text-md'><FontAwesomeIcon icon={faHouse} /></button>
+                <button className='absolute top-[-1.5rem] right-[-1.5rem] text-md'><FontAwesomeIcon icon={faAddressCard} /></button>
+                <button className='text-bluelight'><FontAwesomeIcon icon={faX}/> </button>
+                <button className='absolute bottom-[-1.5rem] left-[-1.5rem] text-md'><FontAwesomeIcon icon={faCode} /></button>
+                <button className='absolute bottom-[-1.5rem] right-[-1.5rem] text-md'><FontAwesomeIcon icon={faScrewdriverWrench} /></button>
+              </motion.div>
+            </>
+          )
+          }
+        </AnimatePresence>
       </motion.div> 
     </>
   )

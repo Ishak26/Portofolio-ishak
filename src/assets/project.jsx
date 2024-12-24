@@ -24,8 +24,8 @@ function Card({projectName,projectImg}){
             <img className="w-full h-3/5 object-contain bg-abusedang  rounded-lg" src={`img/project/${ImgItems}`} alt=""/>
             <h2 className="mb-4 font-sans text-lg font-medium text-black px-4 bg-bluelight py-3 rounded-b-lg m-auto text-center leading-5 border-2 border-black  shadow-[1px_8px_0_rgba(24,24,24)] ">{projectName}</h2>
             <div className="px-5">
-              <div className="grid grid-cols-[60px_auto]">
-                <p className=" font-bold mt-[-5px] ">Tech stack : </p>
+              <div className="grid grid-cols-[100px_auto]">
+                <p className="mt-[-3px] text-sm font-mono">tech stack : </p>
                 <div className="flex gap-3 text-xl items-center ">
                   <FontAwesomeIcon className="text-indigo-400 transform transition-transform duration-300 hover:scale-125" icon={faPhp}/>
                   <FontAwesomeIcon className="text-red-700 transform transition-transform duration-300 hover:scale-125" icon={faLaravel}/>
